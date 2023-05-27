@@ -13,7 +13,7 @@ const mongoose = require("mongoose");
 //     console.log('Connected to DB');
 // });
 
-const urlDB = process.env.URL_DB;
+const urlDB = process.env.BLOG_DB;
 mongoose.connect(urlDB, {useNewUrlParser: true, useUnifiedTopology: true});
 mongoose.connection.on('connected', () => {
     console.log('Connected to DB');
