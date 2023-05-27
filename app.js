@@ -7,8 +7,17 @@ const ejs = require("ejs");
 const _ = require("lodash");
 const mongoose = require("mongoose");
 
-// mongoose.connect('mongodb://localhost:27017/blogDB', {useNewUrlParser: true});
-mongoose.connect('mongodb+srv://'+process.env.MONGO_ID+':'+process.env.MONGO_PASSWORD+'@cluster0.sll0h.mongodb.net/blogDB?retryWrites=true&w=majority', {useNewUrlParser: true});
+// mongoose.connect('mongodb+srv://'+process.env.MONGO_ID+':'+process.env.MONGO_PASSWORD+'@cluster0.sll0h.mongodb.net/blogDB?retryWrites=true&w=majority', {useNewUrlParser: true});
+// mongoose.connect('mongodb://127.0.0.1:27017/todolistDB', {useNewUrlParser: true, useUnifiedTopology: true});
+// mongoose.connection.on('connected', () => {
+//     console.log('Connected to DB');
+// });
+
+const urlDB = process.env.URL_DB;
+mongoose.connect(urlDB, {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connection.on('connected', () => {
+    console.log('Connected to DB');
+});
 
 const homeStartingContent = "Welcome to the blog Application. Here you can write your own blogs and view them. Just go to the compose page and then start create your own custom blogs with just one click.";
 const aboutContent = "This app lets you make your own blog entries and view them.";
